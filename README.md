@@ -1,4 +1,4 @@
-# Jobs Board
+# Job Board
 
 A fullstack MERN application for job listing
 
