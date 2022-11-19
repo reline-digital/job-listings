@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../components/Button'
-import Home from '../container/Home'
+import Home from './Home'
 
 export default function HomePage() {
   return (
@@ -9,7 +9,6 @@ export default function HomePage() {
         Nextjs 13 home page
       </h1>
       <Home />
-      <Button />
     </div>
   )
 }

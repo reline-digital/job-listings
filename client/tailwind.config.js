@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-leagueSpartan)'],
       },
+      fontSize: { body: '0.938rem' },
       colors: {
         primary: 'hsl(180, 29%, 50%)',
         secondary: 'hsl(180, 14%, 20%)',
