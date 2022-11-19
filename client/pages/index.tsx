@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h2 className='text-green-400'>Hello, Next</h2>
+        <h2 className='text-secondary bg-tertiary text-8xl'>Hello, Next</h2>
       </main>
     </>
   )
