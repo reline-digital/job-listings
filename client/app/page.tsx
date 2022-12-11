@@ -1,14 +1,15 @@
 import React from 'react'
-import Button from '../components/Button'
+import { Footer } from '../components/Footer'
+import { Navbar } from '../components/Navbar'
 import Home from './Home'
+import RootLayout from './layout'
 
 export default function HomePage() {
   return (
-    <div>
-      <h1 className='text-secondary bg-tertiary text-8xl'>
-        Nextjs 13 home page
-      </h1>
+    <>
+      <Navbar />
       <Home />
-    </div>
+      <Footer />
+    </>
   )
 }

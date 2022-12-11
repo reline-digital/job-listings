@@ -1,6 +1,8 @@
-import '../assets//styles/globals.css'
+import '../assets/styles/globals.css'
 
 import { League_Spartan } from '@next/font/google'
+import { Navbar } from '../components/Navbar'
+import { Footer } from '../components/Footer'
 
 const leagueSpartan = League_Spartan({
   subsets: ['latin'],
@@ -16,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${leagueSpartan.variable} font-sans`}>
       <head />
-      <body>{children}</body>
+      <body className='border border-red-500'>{children}</body>
     </html>
   )
 }

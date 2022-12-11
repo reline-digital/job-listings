@@ -3,13 +3,24 @@ import React from 'react'
 
 import companyLogo from '../assets/images/photosnap.png'
 
+const data = {
+  id: 1,
+  img: companyLogo,
+  company: 'Photosnap',
+  title: 'Senior frontend developer',
+  info: ['1d ago', 'full time', 'USA only'],
+  tags: ['frontend', 'senior', 'html', 'css', 'javascript'],
+}
+
 export default function Card() {
+  console.log(data.company)
   return (
-    <div className='flex outline-dashed flex-col md:flex-row justify-between items-center'>
+    <div className='flex bg-white flex-col md:flex-row p-6 justify-between items-center'>
       {/* card header */}
+
       <div className='flex'>
         {/* compnay logo */}
-        <div>
+        <div className='rounded-full max-w-[80px]'>
           <Image src={companyLogo} alt='photosnap' />
         </div>
         {/* job description */}
@@ -17,28 +28,31 @@ export default function Card() {
           {/* job description header */}
           <div>
             <a href='/' className='text-primary'>
-              Photosnap
+              {data.company}
+              {/* Photosnap */}
             </a>
             <span className='bg-primary'>NEW!</span>
             <span className='bg-secondary text-lightGrayishCyan'>FEATURED</span>
           </div>
           {/* job title */}
-          <h2 className='text-secondary'>Senior Frontend Developer</h2>
+          <h2 className='text-secondary'>{data.title}</h2>
           {/* job time info */}
           <div className='flex'>
-            <span className='text-darkGrayishCyan'>1d ago</span>
-            <span className='text-darkGrayishCyan'>Full Time</span>
-            <span className='text-darkGrayishCyan'>USA only</span>
+            {data.info.map((tag, i) => (
+              <span key={i} className='text-darkGrayishCyan'>
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       </div>
       {/* card tags */}
-      <div className='flex'>
-        <span className='text-primary'>Frontend</span>
-        <span className='text-primary'>Senior</span>
-        <span className='text-primary'>HTML</span>
-        <span className='text-primary'>CSS</span>
-        <span className='text-primary'>JavaScript</span>
+      <div className='flex gap-4'>
+        {data.tags.map((tag, i) => (
+          <span key={i} className='text-primary bg-lightCyan'>
+            {tag}
+          </span>
+        ))}
       </div>
     </div>
   )
