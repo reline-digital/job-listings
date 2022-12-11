@@ -1,5 +1,11 @@
 import React from 'react'
-import {} from 'react-icons/bs'
+import {
+  BsFacebook,
+  BsInstagram,
+  BsTwitter,
+  BsGithub,
+  BsYoutube,
+} from 'react-icons/bs'
 
 export const Footer = () => {
   return (
@@ -58,19 +64,23 @@ export const Footer = () => {
         <div className='flex justify-center mt-8 space-x-6'>
           <a href='#' className='text-gray-400 hover:text-gray-500'>
             <span className='sr-only'>Facebook</span>
-            {/* <BsFileArrowDown /> */}
+            <BsFacebook />
           </a>
           <a href='#' className='text-gray-400 hover:text-gray-500'>
             <span className='sr-only'>Instagram</span>
+            <BsInstagram />
           </a>
           <a href='#' className='text-gray-400 hover:text-gray-500'>
             <span className='sr-only'>Twitter</span>
+            <BsTwitter />
           </a>
           <a href='#' className='text-gray-400 hover:text-gray-500'>
             <span className='sr-only'>GitHub</span>
+            <BsGithub />
           </a>
           <a href='#' className='text-gray-400 hover:text-gray-500'>
-            <span className='sr-only'>Dribbble</span>
+            <span className='sr-only'>Youtube</span>
+            <BsYoutube />
           </a>
         </div>
         <p className='mt-8 text-base leading-6 text-center text-gray-400'>
