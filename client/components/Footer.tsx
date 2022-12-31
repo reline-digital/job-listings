@@ -84,7 +84,7 @@ export const Footer = () => {
           </a>
         </div>
         <p className='mt-8 text-base leading-6 text-center text-gray-400'>
-          © 2021 SomeCompany, Inc. All rights reserved.
+          © {new Date().getFullYear()} Jobs Board, All rights reserved.
         </p>
       </div>
     </footer>

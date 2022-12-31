@@ -18,9 +18,9 @@ export default function Card() {
     <div className='flex bg-white flex-col md:flex-row p-6 justify-between items-center'>
       {/* card header */}
 
-      <div className='flex'>
+      <div className='flex gap-4'>
         {/* compnay logo */}
-        <div className='rounded-full max-w-[80px]'>
+        <div className='rounded-full max-w-[60px]'>
           <Image src={companyLogo} alt='photosnap' />
         </div>
         {/* job description */}
@@ -31,13 +31,17 @@ export default function Card() {
               {data.company}
               {/* Photosnap */}
             </a>
-            <span className='bg-primary'>NEW!</span>
-            <span className='bg-secondary text-lightGrayishCyan'>FEATURED</span>
+            <span className='bg-primary text-lightGrayishCyan rounded-full p-1 text-xs mx-2'>
+              NEW!
+            </span>
+            <span className='bg-secondary text-lightGrayishCyan rounded-full p-1 text-xs'>
+              FEATURED
+            </span>
           </div>
           {/* job title */}
-          <h2 className='text-secondary'>{data.title}</h2>
+          <h2 className='text-secondary font-bold'>{data.title}</h2>
           {/* job time info */}
-          <div className='flex'>
+          <div className='flex gap-2'>
             {data.info.map((tag, i) => (
               <span key={i} className='text-darkGrayishCyan'>
                 {tag}
