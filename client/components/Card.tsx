@@ -15,7 +15,7 @@ const data = {
 export default function Card() {
   console.log(data.company)
   return (
-    <div className='flex bg-white flex-col md:flex-row p-6 justify-between items-center'>
+    <div className='flex rounded bg-white flex-col md:flex-row p-6 justify-between items-center'>
       {/* card header */}
 
       <div className='flex gap-4'>
@@ -39,7 +39,7 @@ export default function Card() {
             </span>
           </div>
           {/* job title */}
-          <h2 className='text-secondary font-bold'>{data.title}</h2>
+          <h2 className='text-secondary font-bold capitalize'>{data.title}</h2>
           {/* job time info */}
           <div className='flex gap-2'>
             {data.info.map((tag, i) => (
@@ -53,9 +53,12 @@ export default function Card() {
       {/* card tags */}
       <div className='flex gap-4'>
         {data.tags.map((tag, i) => (
-          <span key={i} className='text-primary bg-lightCyan'>
+          <div
+            key={i}
+            className='text-primary px-2 py-1 rounded-md bg-lightCyan'
+          >
             {tag}
-          </span>
+          </div>
         ))}
       </div>
     </div>
