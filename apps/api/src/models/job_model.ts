@@ -1,9 +1,6 @@
-import mongoose, { Document, Schema } from 'mongoose'
-import type { Job } from '../../types'
+import mongoose, { Schema } from 'mongoose'
 
-interface IJob extends Document, Job {}
-
-const job_schema: Schema<IJob> = new Schema<IJob>(
+const job_schema = new Schema(
   {
     company: { type: String, required: true },
     logo: { type: String },
@@ -16,8 +13,8 @@ const job_schema: Schema<IJob> = new Schema<IJob>(
     tools: { type: [String], default: [] },
   },
   {
-    timeStamps: true,
+    timestamps: true,
   }
 )
 
-export const JOB = mongoose.model<IJob>('Job', job_schema)
+export const JOB_SCHEMA = mongoose.model('Job', job_schema)
