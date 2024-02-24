@@ -6,8 +6,8 @@ import { isValidObjectId } from 'mongoose'
 //* route GET /api/jobs
 //? @access Public
 export async function get_jobs(_: Request, res: Response): Promise<void> {
-  // fetch jobs
   try {
+    // fetch jobs
     const jobs = await JOB_SCHEMA.find({}).sort({ createdAt: -1 })
     res.status(200).json({ jobs })
   } catch (error) {
@@ -20,24 +20,22 @@ export async function get_jobs(_: Request, res: Response): Promise<void> {
 //* route GET /api/jobs/:id
 //? @access Public
 export async function get_job(req: Request, res: Response): Promise<void> {
-  const { id } = req.params
-  //* check if id is valid
-  if (!isValidObjectId(id)) {
-    res.status(400).json({ error: 'Invalid id' })
-    return
-  }
-  //* check if job exists
-  const job = await JOB_SCHEMA.findById(id)
-  if (!job) {
-    res.status(404).json({ error: 'Job not found' })
-    return
-  }
-  // fetch job
   try {
+    const { id } = req.params
+    //* check if id is valid
+    if (!isValidObjectId(id)) {
+      res.status(400).json({ error: 'Invalid id' })
+      return
+    }
+    //* check if job exists
     const job = await JOB_SCHEMA.findById(id)
+    if (!job) {
+      res.status(404).json({ error: 'Job not found' })
+      return
+    }
     res.status(200).json(job)
   } catch (error) {
-    console.error('Error fetching jobs:', error)
+    console.error('Error fetching job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
@@ -46,13 +44,13 @@ export async function get_job(req: Request, res: Response): Promise<void> {
 //* route POST /api/jobs/job
 //! @access Private
 export async function post_job(req: Request, res: Response): Promise<void> {
-  //* post job
   try {
+    //* post job
     const jobData = req.body
     const newJob = await JOB_SCHEMA.create(jobData)
     res.status(201).json(newJob)
   } catch (error) {
-    console.error('Error fetching jobs:', error)
+    console.error('Error posting job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
@@ -61,24 +59,24 @@ export async function post_job(req: Request, res: Response): Promise<void> {
 //* route DELETE /api/jobs/:id
 //! @access Private
 export async function delete_job(req: Request, res: Response): Promise<void> {
-  const { id } = req.params
-  //* check if id is valid
-  if (!isValidObjectId(id)) {
-    res.status(400).json({ error: 'Invalid id' })
-    return
-  }
-  //* check if job exists
-  const job = await JOB_SCHEMA.findById(id)
-  if (!job) {
-    res.status(404).json({ error: 'Job not found' })
-    return
-  }
-  //* delete job
   try {
+    const { id } = req.params
+    //* check if id is valid
+    if (!isValidObjectId(id)) {
+      res.status(400).json({ error: 'Invalid id' })
+      return
+    }
+    //* check if job exists
+    const job = await JOB_SCHEMA.findById(id)
+    if (!job) {
+      res.status(404).json({ error: 'Job not found' })
+      return
+    }
+    //* delete job
     const deleted_job = await JOB_SCHEMA.findByIdAndDelete(id)
-    res.status(200).json(deleted_job)
+    res.status(200).json({ message: 'Job deleted successfully' })
   } catch (error) {
-    console.error('Error fetching jobs:', error)
+    console.error('Error deleting job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
@@ -87,26 +85,26 @@ export async function delete_job(req: Request, res: Response): Promise<void> {
 //* route PATCH /api/jobs/:id
 //! @access Private
 export async function update_job(req: Request, res: Response): Promise<void> {
-  const { id } = req.params
-  //* check if id is valid
-  if (!isValidObjectId(id)) {
-    res.status(400).json({ error: 'Invalid id' })
-    return
-  }
-  //* check if job exists
-  const job = await JOB_SCHEMA.findById(id)
-  if (!job) {
-    res.status(404).json({ error: 'Job not found' })
-    return
-  }
-  //* update job
   try {
+    const { id } = req.params
+    //* check if id is valid
+    if (!isValidObjectId(id)) {
+      res.status(400).json({ error: 'Invalid id' })
+      return
+    }
+    //* check if job exists
+    const job = await JOB_SCHEMA.findById(id)
+    if (!job) {
+      res.status(404).json({ error: 'Job not found' })
+      return
+    }
+    //* update job
     const updated_job = await JOB_SCHEMA.findByIdAndUpdate(id, req.body, {
       new: true,
     })
     res.status(200).json(updated_job)
   } catch (error) {
-    console.error('Error fetching jobs:', error)
+    console.error('Error updating job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
