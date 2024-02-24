@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { JOB_SCHEMA } from '../models/job_model'
+import { JOB_SCHEMA } from '@models/job_model'
 import { isValidObjectId } from 'mongoose'
 
 //* @desc Get all jobs

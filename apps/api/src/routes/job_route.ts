@@ -5,7 +5,7 @@ import {
   get_jobs,
   post_job,
   update_job,
-} from '../controllers/job_controller'
+} from '@controllers/job_controller'
 
 const router = express.Router()
 
@@ -19,7 +19,7 @@ router.get('/:id', get_job)
 
 //* @desc Post job
 //! @access Private
-router.post('/job', post_job)
+router.post('/', post_job)
 
 //* @desc Delete job
 //! @access Private
