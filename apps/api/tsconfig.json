@@ -4,7 +4,16 @@
     "lib": ["ES2015"],
     "module": "CommonJS",
     "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@lib/*": ["src/lib/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@models/*": ["src/models/*"],
+      "@config/*": ["config/*"],
+      "@routes/*": ["src/routes/*"],
+    },
   },
   "exclude": ["node_modules"],
-  "include": ["."]
+  "include": ["."],
 }
