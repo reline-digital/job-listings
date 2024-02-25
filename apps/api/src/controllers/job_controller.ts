@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
-import { JOB_SCHEMA } from '@models/job_model'
+import { JOB_SCHEMA } from '@/models/job_model'
 import { isValidObjectId } from 'mongoose'
+import { log } from 'console'
 
 //* @desc Get all jobs
 //* route GET /api/jobs
@@ -11,7 +12,7 @@ export async function get_jobs(_: Request, res: Response): Promise<void> {
     const jobs = await JOB_SCHEMA.find({}).sort({ createdAt: -1 })
     res.status(200).json({ jobs })
   } catch (error) {
-    console.error('Error fetching jobs:', error)
+    log('Error fetching jobs:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
@@ -35,7 +36,7 @@ export async function get_job(req: Request, res: Response): Promise<void> {
     }
     res.status(200).json(job)
   } catch (error) {
-    console.error('Error fetching job:', error)
+    log('Error fetching job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
@@ -45,12 +46,13 @@ export async function get_job(req: Request, res: Response): Promise<void> {
 //! @access Private
 export async function post_job(req: Request, res: Response): Promise<void> {
   try {
+    // validate job data
+    const job_data = req.body
     //* post job
-    const jobData = req.body
-    const newJob = await JOB_SCHEMA.create(jobData)
-    res.status(201).json(newJob)
+    const new_job = await JOB_SCHEMA.create(job_data)
+    res.status(201).json(new_job)
   } catch (error) {
-    console.error('Error posting job:', error)
+    log('Error posting job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
@@ -73,10 +75,10 @@ export async function delete_job(req: Request, res: Response): Promise<void> {
       return
     }
     //* delete job
-    const deleted_job = await JOB_SCHEMA.findByIdAndDelete(id)
+    await JOB_SCHEMA.findByIdAndDelete(id)
     res.status(200).json({ message: 'Job deleted successfully' })
   } catch (error) {
-    console.error('Error deleting job:', error)
+    log('Error deleting job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
@@ -104,7 +106,7 @@ export async function update_job(req: Request, res: Response): Promise<void> {
     })
     res.status(200).json(updated_job)
   } catch (error) {
-    console.error('Error updating job:', error)
+    log('Error updating job:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
