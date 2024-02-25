@@ -15,7 +15,7 @@ router.post('/', validate_schema(USER_VALIDATION_SCHEMA), post_user)
 
 //* @desc Get user
 //! @access Private
-router.get('/:id', get_user)
+router.get('/', validate_schema(USER_VALIDATION_SCHEMA), get_user)
 
 //* @desc Delete user
 //! @access Private

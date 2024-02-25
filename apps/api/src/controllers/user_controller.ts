@@ -9,7 +9,6 @@ import { log } from 'console'
 export async function post_user(req: Request, res: Response): Promise<void> {
   try {
     const user_data = req.body
-
     // check if user email already exists
     const { email } = req.body
     const existing_user = await USER_SCHEMA.findOne({ email })
@@ -19,8 +18,8 @@ export async function post_user(req: Request, res: Response): Promise<void> {
     }
 
     //* post user
-    const new_job = await USER_SCHEMA.create(user_data)
-    res.status(201).json(new_job)
+    const user = await USER_SCHEMA.create(user_data)
+    res.status(201).json(user)
   } catch (error) {
     log('Error posting user:', error)
     res.status(500).json({ error: 'Internal server error' })
@@ -28,22 +27,20 @@ export async function post_user(req: Request, res: Response): Promise<void> {
 }
 
 //* @desc Get user
-//* route GET /api/user/:id
+//* route GET /api/user
 //! @access Private
 export async function get_user(req: Request, res: Response): Promise<void> {
   try {
-    const { id } = req.params
-    //* check if id is valid
-    if (!isValidObjectId(id)) {
-      res.status(400).json({ error: 'Invalid id' })
+    //* get user by email and password
+    const { email, password } = req.body
+    const user = await USER_SCHEMA.findOne({ email, password })
+
+    //* check if user email or password is incorrect
+    if (!user || user.email !== email || user.password !== password) {
+      res.status(401).json({ error: 'Incorrect email or password' })
       return
     }
-    //* check if user exists
-    const user = await USER_SCHEMA.findById(id)
-    if (!user) {
-      res.status(404).json({ error: 'user not found' })
-      return
-    }
+
     res.status(200).json(user)
   } catch (error) {
     log('Error fetching user:', error)
@@ -51,7 +48,7 @@ export async function get_user(req: Request, res: Response): Promise<void> {
   }
 }
 
-//* @desc Delete job
+//* @desc Delete user
 //* route DELETE /api/user/:id
 //! @access Private
 export async function delete_user(req: Request, res: Response): Promise<void> {
@@ -95,11 +92,11 @@ export async function update_user(req: Request, res: Response): Promise<void> {
       return
     }
 
-    // check if user email already exists
+    //* check if user email already exists
     const { email } = req.body
     const existing_user = await USER_SCHEMA.findOne({ email })
     if (existing_user && existing_user._id.toString() !== id) {
-      res.status(400).json({ error: 'Email already exists' })
+      res.status(409).json({ error: 'Email already exists' })
       return
     }
 
