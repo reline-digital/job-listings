@@ -14,7 +14,7 @@ import {
 router.post('/', validate_schema(USER_VALIDATION_SCHEMA), post_user)
 
 //* @desc Get user
-//! @access Private
+//? @access Public
 router.get('/', validate_schema(USER_VALIDATION_SCHEMA), get_user)
 
 //* @desc Delete user
