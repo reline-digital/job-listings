@@ -1,15 +1,31 @@
-# Turborepo kitchen sink starter
+# Job Board
 
-This is an official starter Turborepo with multiple meta-frameworks all working in harmony and sharing packages.
+The Job Board is a powerful and versatile application designed to streamline the process of job searching and hiring. It provides a user-friendly interface for both job seekers and employers, offering a comprehensive platform to connect talent with opportunities.
 
-This example also shows how to use [Workspace Configurations](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces).
+## Features
 
-## Using this example
+- **Job Listings**: Browse through a wide range of job listings from various industries and locations.
+- **Advanced Search**: Utilize advanced search filters to find specific job positions based on criteria such as job title, location, salary, and more.
+- **Application Management**: Easily manage job applications, track their status, and communicate with applicants.
 
-Run the following command:
+## Setup Environment Variables
 
-```sh
-npx create-turbo@latest -e kitchen-sink
+Create a `.env` file at the root of the project with contents from `.env.example` and update env values accordingly
+
+## Setting up the app
+
+Install all the dependencies
+
+```
+npm install
+```
+
+## Running up the app
+
+Starting development server
+
+```
+npm run dev
 ```
 
 ## What's inside?
@@ -19,9 +35,7 @@ This Turborepo includes the following packages and apps:
 ### Apps and Packages
 
 - `api`: an [Express](https://expressjs.com/) server
-- `storefront`: a [Next.js](https://nextjs.org/) app
-- `admin`: a [Vite](https://vitejs.dev/) single page app
-- `blog`: a [Remix](https://remix.run/) blog
+- `frontend`: a [Next.js](https://nextjs.org/) app
 - `@repo/logger`: isomorphic logger (a small wrapper around console.log)
 - `@repo/ui`: a dummy React UI library (which contains a single `<CounterButton>` component)
 - `scripts`: Jest and ESLint configurations
@@ -31,7 +45,7 @@ Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
-This Turborepo has some additional tools already setup for you:
+Some additional tools:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
