@@ -4,10 +4,13 @@ import { isValidObjectId } from 'mongoose'
 import { log } from 'console'
 import { generate_token } from 'utils/generate_token'
 
-//* @desc Post user
+//* @desc Register user
 //* route POST /api/user
 //? @access Public
-export async function create_user(req: Request, res: Response): Promise<void> {
+export async function register_user(
+  req: Request,
+  res: Response
+): Promise<void> {
   try {
     const user_data = req.body
     // check if user email already exists
@@ -95,6 +98,23 @@ export async function update_user(req: Request, res: Response): Promise<void> {
     res.status(200).json(updated_user)
   } catch (error) {
     log('Error updating user:', error)
+    res.status(500).json({ error: 'Internal server error' })
+  }
+}
+
+//* @desc Get User
+//* route GET /api/user/profile
+//! @access Private
+export async function get_user(req: Request, res: Response): Promise<void> {
+  try {
+    const user = {
+      name: req.user?.name,
+      email: req.user?.email,
+      _id: req.user?._id,
+    }
+    res.status(200).json(user)
+  } catch (error) {
+    log('Error fetching user:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
