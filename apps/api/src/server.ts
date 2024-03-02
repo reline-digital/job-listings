@@ -3,10 +3,9 @@ import express, { type Express } from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import { config } from 'dotenv'
-import { connect_db } from '@config/db'
+import cookieParser from 'cookie-parser'
 
 config()
-connect_db()
 
 export const createServer = (): Express => {
   const app = express()
@@ -16,6 +15,7 @@ export const createServer = (): Express => {
     .use(urlencoded({ extended: true }))
     .use(json())
     .use(cors())
+    .use(cookieParser())
     .get('/health', (_, res) => {
       return res.json({ ok: true })
     })
