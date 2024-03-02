@@ -2,9 +2,9 @@ import mongoose, { Document, Schema } from 'mongoose'
 import bcrypt from 'bcrypt'
 
 interface IUserSchema extends Document {
+  name?: string
   email: string
   password: string
-  name?: string
   match_password: (password: string) => Promise<boolean>
 }
 

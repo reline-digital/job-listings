@@ -7,7 +7,7 @@ import { generate_token } from 'utils/generate_token'
 //* @desc Post user
 //* route POST /api/user
 //? @access Public
-export async function post_user(req: Request, res: Response): Promise<void> {
+export async function create_user(req: Request, res: Response): Promise<void> {
   try {
     const user_data = req.body
     // check if user email already exists
@@ -28,10 +28,10 @@ export async function post_user(req: Request, res: Response): Promise<void> {
   }
 }
 
-//* @desc Get user
+//* @desc Login user
 //* route GET /api/user
 //! @access Public
-export async function get_user(req: Request, res: Response): Promise<void> {
+export async function login_user(req: Request, res: Response): Promise<void> {
   try {
     //* get user by email and password
     const { email, password } = req.body
@@ -50,28 +50,14 @@ export async function get_user(req: Request, res: Response): Promise<void> {
   }
 }
 
-//* @desc Delete user
-//* route DELETE /api/user/:id
-//! @access Private
-export async function delete_user(req: Request, res: Response): Promise<void> {
+//* @desc Logout user
+//* route POST /api/user/logout
+// ? @access Public
+export async function logout_user(_: Request, res: Response): Promise<void> {
   try {
-    const { id } = req.params
-    //* check if id is valid
-    if (!isValidObjectId(id)) {
-      res.status(400).json({ error: 'Invalid id' })
-      return
-    }
-    //* check if user exists
-    const user = await USER_SCHEMA.findById(id)
-    if (!user) {
-      res.status(404).json({ error: 'user not found' })
-      return
-    }
-    //* delete user
-    await USER_SCHEMA.findByIdAndDelete(id)
-    res.status(200).json({ message: 'user deleted successfully' })
+    res.clearCookie('token').status(200).json({ message: 'User logged out' })
   } catch (error) {
-    log('Error deleting user:', error)
+    log('Error logging out user:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }
