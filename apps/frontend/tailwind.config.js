@@ -21,6 +21,9 @@ module.exports = {
         warning: 'hsl(34, 97%, 64%)',
         danger: 'hsl(0, 100%, 63%)',
       },
+      fontFamily: {
+        sans: ['var(--font-league_spartan)'],
+      },
     },
   },
   plugins: [],
