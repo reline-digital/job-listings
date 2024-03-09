@@ -1,5 +1,4 @@
 import { League_Spartan } from 'next/font/google'
-
 import './styles.css'
 
 const league_spartan = League_Spartan({
