@@ -13,11 +13,11 @@ import { protect_route } from '@/middleware/auth_middleware'
 
 //* @desc Create user
 //? @access Public
-router.post('/', validate_schema(USER_VALIDATION_SCHEMA), register_user)
+router.post('/register', validate_schema(USER_VALIDATION_SCHEMA), register_user)
 
 //* @desc Login user
 //? @access Public
-router.get('/login', validate_schema(USER_VALIDATION_SCHEMA), login_user)
+router.post('/login', validate_schema(USER_VALIDATION_SCHEMA), login_user)
 
 //* @desc Logout user
 //? @access Public
