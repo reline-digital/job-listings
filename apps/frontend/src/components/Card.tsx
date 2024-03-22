@@ -3,7 +3,7 @@ import React from 'react'
 
 export function Card() {
   return (
-    <div className="border-primary relative flex flex-col justify-between gap-4 rounded border-l-4 bg-white p-4 font-semibold shadow-lg  md:flex-row md:px-6 md:py-8">
+    <div className="border-primary relative flex flex-col justify-between gap-4 rounded border-l-4 bg-white p-4 font-semibold shadow-lg md:flex-row  md:items-center md:px-6 md:py-8">
       <div className="md:flex md:items-center md:gap-4">
         <Image
           src="/assets/images/company-logo.svg"
