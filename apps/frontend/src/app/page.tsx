@@ -1,11 +1,11 @@
-import { Card } from '@/components/Card'
+import { CardList } from '@/containers'
 
-export default function Store(): JSX.Element {
+export default function Index() {
   return (
     <>
-      <header className="mb-10 bg-primary bg-[url('/assets/images/bg-header.svg')] bg-cover py-14"></header>
+      <header className="bg-primary mb-10 bg-[url('/assets/images/bg-header.svg')] bg-cover py-14"></header>
       <main className="mx-auto max-w-[90%] md:container">
-        <Card />
+        <CardList />
       </main>
     </>
   )
