@@ -6,14 +6,14 @@ export function Pill({
   tag?: boolean
 }) {
   return (
-    <div className="flex transition-colors">
+    <div className="flex">
       <div
-        className={`${tag ? 'rounded-s' : 'hover:bg-primary hover:text-tertiary cursor-pointer rounded'} bg-tertiary text-primary px-2 py-0.5  capitalize`}
+        className={`${tag ? 'rounded-s' : 'hover:bg-primary hover:text-tertiary cursor-pointer rounded'} bg-tertiary text-primary px-2 py-0.5 font-medium capitalize  transition-colors`}
       >
         {children}
       </div>
       {tag && (
-        <button className="bg-primary hover:bg-secondary rounded-e px-2">
+        <button className="bg-primary hover:bg-secondary rounded-e px-2 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
             <path
               fill="#FFF"

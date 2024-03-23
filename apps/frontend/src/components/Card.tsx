@@ -1,13 +1,12 @@
-import { Job } from '@/Types'
+import { Job } from '@/types'
 import Image from 'next/image'
 import React from 'react'
-import { Pill } from './Pill'
+import { Pill } from '.'
 
 export function Card({ job }: { job: Job }) {
-  console.log(job)
   return (
     <div
-      className={`${job.featured ? 'border-primary border-l-4' : null} flex flex-col justify-between gap-4 rounded bg-white  p-4 font-semibold shadow-lg md:flex-row md:items-center  md:gap-8 md:px-6 md:py-8`}
+      className={`${job.featured ? 'border-primary border-l-4' : null} flex flex-col justify-between gap-4 rounded bg-white p-4 font-semibold shadow-lg md:flex-row md:items-center  md:gap-8 md:px-6 md:py-8`}
     >
       <div className="md:flex md:items-center md:gap-4">
         <Image
@@ -45,7 +44,7 @@ export function Card({ job }: { job: Job }) {
       </div>
       <hr className="md:hidden" />
       <div className="flex flex-wrap items-center gap-4 ">
-        <Pill tag>{job.role}</Pill>
+        <Pill>{job.role}</Pill>
         <Pill>{job.level}</Pill>
         {job.languages.map((language) => (
           <Pill key={language}>{language}</Pill>
