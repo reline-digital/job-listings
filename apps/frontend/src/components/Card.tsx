@@ -44,8 +44,8 @@ export function Card({ job }: { job: Job }) {
         </div>
       </div>
       <hr className="md:hidden" />
-      <div className="text-primary flex flex-wrap items-center gap-4 text-left capitalize">
-        <Pill>{job.role}</Pill>
+      <div className="flex flex-wrap items-center gap-4 ">
+        <Pill tag>{job.role}</Pill>
         <Pill>{job.level}</Pill>
         {job.languages.map((language) => (
           <Pill key={language}>{language}</Pill>
