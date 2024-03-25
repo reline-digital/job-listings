@@ -46,7 +46,7 @@ export async function login_user(req: Request, res: Response): Promise<void> {
       return
     }
     generate_token(res, user._id.toString())
-    res.status(200).json(user)
+    res.status(200).json({ message: 'User logged in successfully' })
   } catch (error) {
     log('Error fetching user:', error)
     res.status(500).json({ error: 'Internal server error' })

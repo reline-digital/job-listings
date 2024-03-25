@@ -14,7 +14,12 @@ export const createServer = (): Express => {
     .use(morgan('dev'))
     .use(urlencoded({ extended: true }))
     .use(json())
-    .use(cors())
+    .use(
+      cors({
+        origin: true,
+        credentials: true,
+      })
+    )
     .use(cookieParser())
     .get('/health', (_, res) => {
       return res.json({ ok: true })

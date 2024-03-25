@@ -6,7 +6,7 @@ import { Pill } from '.'
 export function Card({ job }: { job: Job }) {
   return (
     <div
-      className={`${job.featured ? 'border-primary border-l-4' : null} flex flex-col justify-between gap-4 rounded bg-white p-4 font-semibold shadow-lg md:flex-row md:items-center  md:gap-8 md:px-6 md:py-8`}
+      className={`${job.featured && 'border-primary border-l-4'} flex flex-col justify-between gap-4 rounded bg-white p-4 font-semibold shadow-lg md:flex-row md:items-center  md:gap-8 md:px-6 md:py-8`}
     >
       <div className="md:flex md:items-center md:gap-4">
         <Image
