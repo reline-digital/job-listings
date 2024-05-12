@@ -6,13 +6,14 @@ import { Pill } from '.'
 export function Card({ job }: { job: Job }) {
   return (
     <div
-      className={`${job.featured && 'border-primary border-l-4'} flex flex-col justify-between gap-4 rounded bg-white p-4 font-semibold shadow-lg md:flex-row md:items-center  md:gap-8 md:px-6 md:py-8`}
+      data-featured={job.featured}
+      className="data-[featured=true]:border-primary flex flex-col justify-between gap-4 rounded  bg-white p-4 font-semibold shadow-lg data-[featured=true]:border-l-4 md:flex-row md:items-center  md:gap-8 md:px-6 md:py-8"
     >
       <div className="md:flex md:items-center md:gap-4">
         <Image
           src={job.logo}
           alt={job.company}
-          className="-mt-11 h-14 w-14 rounded-full md:static md:mt-0 md:h-auto md:w-auto"
+          className="-mt-11 h-14 w-14 rounded-full md:static md:mt-0 md:h-20 md:w-20"
           width={40}
           height={40}
         />
@@ -36,6 +37,10 @@ export function Card({ job }: { job: Job }) {
           <div className="text-secondary-light flex flex-wrap items-center gap-2 text-xs capitalize">
             <span className="p-1">{job.postedAt}</span>
             <span>&#x2022;</span>
+            {/* <span className="p-1">
+              {new Date(job.createdAt).toLocaleDateString()}
+            </span>
+            <span>&#x2022;</span> */}
             <span className="p-1">{job.contract}</span>
             <span>&#x2022;</span>
             <span className="p-1">{job.location}</span>
