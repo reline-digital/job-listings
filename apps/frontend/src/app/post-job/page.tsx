@@ -3,7 +3,7 @@
 import { Button } from '@/components/Button'
 import { Job } from '@/types'
 import { useState } from 'react'
-import { languages, tools } from '../../constants'
+import { languages, tools } from '@/constants'
 
 export default function PostJob() {
   const [logoUrl, setLogoUrl] = useState<string | null>(null)
@@ -13,7 +13,7 @@ export default function PostJob() {
       const formData = new FormData()
       formData.append('image', file)
       fetch(
-        'https://api.imgbb.com/1/upload?key=6f8623c19cbd73ef6785b7ba44f0bda4',
+        `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`,
         {
           method: 'POST',
           body: formData,
