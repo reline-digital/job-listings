@@ -1,14 +1,25 @@
+import { Button } from '@/components/Button'
+import Link from 'next/link'
+
 export function Navbar() {
   return (
     <>
-      <section className="flex justify-between">
-        <div>Logo</div>
+      <section className="flex items-center justify-between">
+        <div>
+          <Link href="/">Logo</Link>
+        </div>
         <div className="flex gap-4">
           <span>About</span>
-          <span>Home</span>
-          <span>Jobs</span>
+          <span>
+            <Link href="/">Home</Link>
+          </span>
+          <span>
+            <Link href="/post-job">Post a Job</Link>
+          </span>
         </div>
-        <div>Logout</div>
+        <Button type="submit">
+          <Link href="/login">Logout</Link>
+        </Button>
       </section>
     </>
   )
