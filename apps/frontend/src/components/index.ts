@@ -1,3 +1,7 @@
 export { Card } from './Card'
 export { Pill } from './Pill'
 export { SearchBar } from './SearchBar'
+export { BaseDropdown } from './BaseDropdown'
+export { SearchableCheckboxList } from './SearchableCheckboxList'
+export { Button } from './Button'
+export { BaseFileUpload } from './BaseFileUpload'
