@@ -1,6 +1,5 @@
 import { CardList } from '@/containers'
-import { SearchBar } from '@/components'
-import { Navbar } from '@/components/Navbar'
+import { SearchBar, Navbar } from '@/components'
 
 export default function Index() {
   return (
